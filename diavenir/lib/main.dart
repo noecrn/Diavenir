@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'welcome_screen',
       routes: {
-        'welcome_screen': (context) => MeteoDesEmotionsPage(),
+        'welcome_screen': (context) => DataInputPage(),
       },
     );
   }

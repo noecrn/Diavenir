@@ -17,7 +17,12 @@ class _DataInputPageState extends State<DataInputPage> {
   late String genre = 'Homme';
   late double poids;
   late double taille;
-  late double tension_artherielle;
+  late double HbA1c;
+  late double perimetre_abdominal;
+  late double LDL_cholesterol;
+  late double activite_physique;
+  late double tension_artherielle; //input: "_/_" on utilise que le premier
+  late double fonction_renale;
   bool tabac = false;
   bool alcool = false;
 
