@@ -28,8 +28,5 @@ flutter:
         - asset: assets/fonts/Montserrat-Regular.ttf
           weight: 700
   assets:
-    - assets/svg/silhouette1.svg
-    - assets/svg/silhouette2.svg
-    - assets/svg/silhouette3.svg
-    - assets/svg/logo_eclair_soleil.svg
+    - assets/svg/
   uses-material-design: true

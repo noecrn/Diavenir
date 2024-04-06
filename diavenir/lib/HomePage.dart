@@ -77,6 +77,8 @@ class HomePage extends StatelessWidget {
         children: [
           SpeedDialChild(
             child: Icon(Icons.monitor_weight),
+            backgroundColor: Color.fromRGBO(49, 100, 232, 1),
+            labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
             label: 'Ajouter Poids',
             labelStyle: TextStyle(
               color: Colors.white,
@@ -87,6 +89,8 @@ class HomePage extends StatelessWidget {
             onTap: () => print('Ajouter Poids'),
           ),
           SpeedDialChild(
+            backgroundColor: Color.fromRGBO(49, 100, 232, 1),
+            labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
             child: Icon(Icons.height),
             label: 'Ajouter Taille',
             labelStyle: TextStyle(
@@ -98,6 +102,8 @@ class HomePage extends StatelessWidget {
             onTap: () => print('Ajouter Taille'),
           ),
           SpeedDialChild(
+            backgroundColor: Color.fromRGBO(49, 100, 232, 1),
+            labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
             child: Icon(Icons.delete),
             label: 'Supprimer',
             labelStyle: TextStyle(
