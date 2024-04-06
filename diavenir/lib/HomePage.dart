@@ -1,8 +1,54 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+
+class SimpleBarChart extends StatelessWidget {
+  final List<charts.Series> seriesList;
+  final bool animate;
+
+  SimpleBarChart(this.seriesList, {required this.animate});
+
+  @override
+  Widget build(BuildContext context) {
+    return new charts.BarChart(
+      seriesList as List<charts.Series<OrdinalSales, String>>,
+      animate: animate,
+      vertical: false,
+      primaryMeasureAxis: new charts.NumericAxisSpec(
+        renderSpec: new charts.NoneRenderSpec(),
+      ),
+      domainAxis: new charts.OrdinalAxisSpec(
+        renderSpec: new charts.NoneRenderSpec(),
+      ),
+    );
+  }
+
+  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+    final data = [
+      new OrdinalSales('2014', 5),
+    ];
+
+    return [
+      new charts.Series<OrdinalSales, String>(
+        id: 'Sales',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: data,
+      )
+    ];
+  }
+}
+
+class OrdinalSales {
+  final String year;
+  final int sales;
+
+  OrdinalSales(this.year, this.sales);
+}
 
 class HomePage extends StatelessWidget {
   final double poids;
@@ -18,7 +64,27 @@ class HomePage extends StatelessWidget {
       return 'assets/svg/silhouette3.svg';
     }
   }
-  
+
+  int getHeart() {
+    Random random = new Random.secure();
+    return(random.nextInt(101));
+  }
+
+  int getEye() {
+    Random random = new Random.secure();
+    return(random.nextInt(101));
+  }
+
+  int getKidney() {
+    Random random = new Random.secure();
+    return(random.nextInt(101));
+  }
+
+  int getFeet() {
+    Random random = new Random.secure();
+    return(random.nextInt(101));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,18 +121,64 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: SvgPicture.asset('assets/svg/logo_eclair_soleil.svg'),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: SvgPicture.asset(getSvgAsset()),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 70),
+              Center(
+                child: SvgPicture.asset('assets/svg/logo_eclair_soleil.svg'),
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: SvgPicture.asset(getSvgAsset()),
+              ),
+              SizedBox(height: 100),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset('assets/svg/Frame.svg'),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: SimpleBarChart(
+                            SimpleBarChart._createSampleData(),
+                            animate: true,
+
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Frame-2.svg'),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Frame-3.svg'),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Frame-4.svg'),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
       floatingActionButton: SpeedDial(
