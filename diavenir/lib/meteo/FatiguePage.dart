@@ -1,9 +1,15 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:diavenir/DefiPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FatiguePage extends StatefulWidget {
+  late final double poids;
+  late final String? genre;
+
+  FatiguePage({required this.poids, this.genre});
+
   @override
   State<FatiguePage> createState() => _FatiguePageState();
 }
@@ -155,8 +161,10 @@ class _FatiguePageState extends State<FatiguePage> {
             child: IconButton(
               icon: Icon(Icons.chevron_right, color: Colors.white, size: 40,),
               onPressed: () {
-                // Add your code here...
-                print('Button clicked!');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DefiPage(poids: widget.poids, genre: widget.genre)),
+                );
               },
             ),
           ),

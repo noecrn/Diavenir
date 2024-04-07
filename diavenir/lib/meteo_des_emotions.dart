@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:diavenir/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:diavenir/meteo/MotivePage.dart';
@@ -8,6 +9,11 @@ import 'package:diavenir/meteo/FatiguePage.dart';
 import 'package:diavenir/meteo/AnxieuxPage.dart';
 
 class MeteoDesEmotionsPage extends StatelessWidget {
+  late final double poids;
+  late final String? genre;
+
+  MeteoDesEmotionsPage({required this.poids, this.genre});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +90,7 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MotivePage()),
+                MaterialPageRoute(builder: (context) => MotivePage(poids: poids, genre: genre)),
               );
             },
             child: Container(
@@ -151,7 +157,7 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FormePage()),
+                MaterialPageRoute(builder: (context) => FormePage(poids: poids, genre: genre)),
               );
             },
             child: Container(
@@ -218,7 +224,7 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FatiguePage()),
+                MaterialPageRoute(builder: (context) => FatiguePage(poids: poids, genre: genre)),
               );
             },
             child: Container(
@@ -285,7 +291,7 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AnxieuxPage()),
+                MaterialPageRoute(builder: (context) => AnxieuxPage(poids: poids, genre: genre)),
               );
             },
             child: Container(
@@ -350,7 +356,10 @@ class MeteoDesEmotionsPage extends StatelessWidget {
           SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage(poids: poids, genre: genre)),
+              );
             },
             child: Container(
               width: 290,

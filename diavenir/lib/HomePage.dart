@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, unnecessary_new
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,16 +54,27 @@ class OrdinalSales {
 
 class HomePage extends StatelessWidget {
   final double poids;
+  final String? genre;
 
-  HomePage({required this.poids});
+  HomePage({required this.poids, this.genre});
 
   String getSvgAsset() {
-    if (poids <= 80) {
-      return 'assets/svg/silhouette1.svg';
-    } else if (poids > 80 && poids <= 100) {
-      return 'assets/svg/silhouette2.svg';
+    if (genre == "Homme"){
+      if (poids <= 80) {
+        return 'assets/svg/silhouette1.svg';
+      } else if (poids > 80 && poids <= 100) {
+        return 'assets/svg/silhouette2.svg';
+      } else {
+        return 'assets/svg/silhouette3.svg';
+      }
     } else {
-      return 'assets/svg/silhouette3.svg';
+      if (poids <= 80) {
+        return 'assets/svg/silhouette1_femme.svg';
+      } else if (poids > 80 && poids <= 100) {
+        return 'assets/svg/silhouette2_femme.svg';
+      } else {
+        return 'assets/svg/silhouette3_femme.svg';
+      }
     }
   }
 
@@ -134,49 +147,89 @@ class HomePage extends StatelessWidget {
               Center(
                 child: SvgPicture.asset(getSvgAsset()),
               ),
-              SizedBox(height: 100),
+              SizedBox(height: 70),
               Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset('assets/svg/Frame.svg'),
                       SizedBox(width: 20),
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          child: SimpleBarChart(
-                            SimpleBarChart._createSampleData(),
-                            animate: true,
-
-                          ),
-                        ),
-                      ),
+                      SvgPicture.asset('assets/svg/Group3.svg'),
                     ],
                   ),
                   SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(width: 20),
                       SvgPicture.asset('assets/svg/Frame-2.svg'),
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Group4.svg'),
                     ],
                   ),
                   SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(width: 20),
                       SvgPicture.asset('assets/svg/Frame-3.svg'),
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Group5.svg'),
                     ],
                   ),
                   SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(width: 20),
                       SvgPicture.asset('assets/svg/Frame-4.svg'),
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/svg/Group6.svg'),
                     ],
                   ),
                 ],
-              )
+              ),
+              SizedBox(height: 70),
+              Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SvgPicture.asset('assets/svg/FooterHomePage.svg'),
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 120),
+                        SizedBox(
+                          child: Text(
+                            'Félicitation Robert',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w700,
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        SizedBox(
+                          width: 334,
+                          child: Text(
+                            'Tu as été très motivée \n8 fois consécutives',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w400,
+                              height: 0,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -191,7 +244,7 @@ class HomePage extends StatelessWidget {
             child: Icon(Icons.monitor_weight),
             backgroundColor: Color.fromRGBO(49, 100, 232, 1),
             labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
-            label: 'Ajouter Poids',
+            label: '+ Poids',
             labelStyle: TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -201,30 +254,17 @@ class HomePage extends StatelessWidget {
             onTap: () => print('Ajouter Poids'),
           ),
           SpeedDialChild(
+            child: Icon(Icons.monitor_weight),
             backgroundColor: Color.fromRGBO(49, 100, 232, 1),
             labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
-            child: Icon(Icons.height),
-            label: 'Ajouter Taille',
+            label: '+ Prise de sang',
             labelStyle: TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.w700,
             ),
-            onTap: () => print('Ajouter Taille'),
-          ),
-          SpeedDialChild(
-            backgroundColor: Color.fromRGBO(49, 100, 232, 1),
-            labelBackgroundColor: Color.fromRGBO(49, 100, 232, 1),
-            child: Icon(Icons.delete),
-            label: 'Supprimer',
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w700,
-            ),
-            onTap: () => print('Supprimer'),
+            onTap: () => print('Ajouter Poids'),
           ),
         ],
       ),

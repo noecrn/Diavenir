@@ -1,14 +1,14 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:diavenir/ConfirmationDefiPage.dart';
+import 'package:diavenir/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DefiPage extends StatelessWidget {
+class ConfirmationDefiPage extends StatelessWidget {
   late final double poids;
   late final String? genre;
 
-  DefiPage({required this.poids, this.genre});
+  ConfirmationDefiPage({required this.poids, this.genre});
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +54,10 @@ class DefiPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ConfirmationDefiPage(poids: poids, genre: genre)),
+                  MaterialPageRoute(builder: (context) => HomePage(poids: poids, genre: genre)),
                 );
               },
-              child: SvgPicture.asset('assets/svg/BullShitSVG.svg'),
+              child: SvgPicture.asset('assets/svg/BullShit2.svg'),
             ),
           ],
         ),
