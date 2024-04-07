@@ -1,7 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, unnecessary_new
 
+<<<<<<< Updated upstream
 import 'dart:math';
 
+=======
+import 'dart:html';
+import 'dart:math';
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,9 +59,34 @@ class OrdinalSales {
 
 class HomePage extends StatelessWidget {
   final double poids;
+<<<<<<< Updated upstream
   final String? genre;
 
   HomePage({required this.poids, this.genre});
+=======
+  final double taille;
+  double HbA1c;
+  double perimetre_abdominal;
+  double LDL_cholesterol;
+  double activite_physique;
+  String tension_artherielle; //input: "_/_" on utilise que le premier
+  double fonction_renale;
+  bool tabac;
+  bool alcool;
+
+  HomePage({
+    required this.poids,
+    required this.taille,
+    required this.HbA1c,
+    required this.perimetre_abdominal,
+    required this.LDL_cholesterol,
+    required this.activite_physique,
+    required this.tension_artherielle, //input: "_/_" on utilise que le premier
+    required this.fonction_renale,
+    required this.tabac,
+    required this.alcool,
+  });
+>>>>>>> Stashed changes
 
   String getSvgAsset() {
     if (genre == "Homme"){
@@ -78,24 +108,71 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  int getHeart() {
-    Random random = new Random.secure();
-    return(random.nextInt(101));
+  double getHeart() {
+    double heart = 0;
+    double tailleM = taille / 100;
+    double imc = poids / pow(tailleM, 2);
+    double tensionS = double.parse(tension_artherielle.split("/").first);
+
+    if (HbA1c > 7) heart += 10;
+    if (HbA1c > 10) heart += 10;
+    imc -= 29;
+    if (imc > 0) heart += 10 * ((imc / 5) + 1);
+    perimetre_abdominal -= 89;
+    if (perimetre_abdominal > 0) heart += 10 * ((perimetre_abdominal / 5) + 1);
+    LDL_cholesterol -= 0.9;
+    if (LDL_cholesterol > 0) heart += 10 * ((LDL_cholesterol / 0.1) + 1);
+    tensionS -= 149;
+    if (tensionS > 0) heart += 10 * ((tensionS / 10) + 1);
+    if (alcool) heart += 20;
+    if (tabac) heart += 30;
+    if (activite_physique > 0) heart -= 10;
+    if (activite_physique > 30) heart -= 10;
+    if (heart < 0) heart = 0;
+    if (heart > 100) heart = 100;
+    return (heart);
   }
 
-  int getEye() {
-    Random random = new Random.secure();
-    return(random.nextInt(101));
+  double getEye() {
+    double eye = 0;
+    double tensionS = double.parse(tension_artherielle.split("/").first);
+    if (HbA1c > 7) eye += 10;
+    if (HbA1c > 10) eye += 10;
+    if (tensionS > 0) eye += 10 * ((tensionS / 10) + 1);
+    if (activite_physique > 0) eye -= 10;
+    if (activite_physique > 30) eye -= 10;
+    if (eye < 0) eye = 0;
+    if (eye > 100) eye = 100;
+    return (eye);
   }
 
-  int getKidney() {
-    Random random = new Random.secure();
-    return(random.nextInt(101));
+  double getKidney() {
+    double kidney = 0;
+    double tensionS = double.parse(tension_artherielle.split("/").first);
+    if (HbA1c > 7) kidney += 10;
+    if (HbA1c > 10) kidney += 10;
+    if (tensionS > 0) kidney += 10 * ((tensionS / 10) + 1);
+    if (fonction_renale < 90) kidney += 25;
+    if (fonction_renale < 60) kidney += 25;
+    if (fonction_renale < 30) kidney += 25;
+    if (fonction_renale < 15) kidney += 25;
+    if (activite_physique > 0) kidney -= 10;
+    if (activite_physique > 30) kidney -= 10;
+    if (kidney < 0) kidney = 0;
+    if (kidney > 100) kidney = 100;
+    return (kidney);
   }
 
-  int getFeet() {
-    Random random = new Random.secure();
-    return(random.nextInt(101));
+  double getFeet() {
+    double feet = 0;
+    if (HbA1c > 7) feet += 10;
+    if (HbA1c > 10) feet += 10;
+    if (tabac) feet += 10;
+    if (activite_physique > 0) feet -= 10;
+    if (activite_physique > 30) feet -= 10;
+    if (feet < 0) feet = 0;
+    if (feet > 100) feet = 100;
+    return (feet);
   }
 
   @override
