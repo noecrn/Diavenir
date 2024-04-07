@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
 import 'package:diavenir/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +9,35 @@ import 'package:diavenir/meteo/FatiguePage.dart';
 import 'package:diavenir/meteo/AnxieuxPage.dart';
 
 class MeteoDesEmotionsPage extends StatelessWidget {
-  late final double poids;
-  late final String? genre;
+  final double poids;
+  final String? genre;
+  final double taille;
+  double HbA1c;
+  double perimetre_abdominal;
+  double LDL_cholesterol;
+  double activite_physique;
+  String tension_artherielle; //input: "_/_" on utilise que le premier
+  double fonction_renale;
+  bool tabac;
+  String? tabac_type = 'Fumeur actif';
+  bool alcool;
+  double alcool_type;
 
-  MeteoDesEmotionsPage({required this.poids, this.genre});
+  MeteoDesEmotionsPage({
+    required this.poids,
+    required this.genre,
+    required this.taille,
+    required this.HbA1c,
+    required this.perimetre_abdominal,
+    required this.LDL_cholesterol,
+    required this.activite_physique,
+    required this.tension_artherielle, //input: "_/_" on utilise que le premier
+    required this.fonction_renale,
+    required this.tabac,
+    required this.tabac_type,
+    required this.alcool,
+    required this.alcool_type,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +115,21 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MotivePage(poids: poids, genre: genre)),
+                MaterialPageRoute(builder: (context) => MotivePage(
+                  poids: poids,
+                  genre: genre,
+                  taille: taille,
+                  tension_artherielle: tension_artherielle,
+                  tabac: tabac,
+                  tabac_type: tabac_type,
+                  alcool: alcool,
+                  alcool_type: alcool_type,
+                  activite_physique: activite_physique,
+                  perimetre_abdominal: perimetre_abdominal,
+                  fonction_renale: fonction_renale,
+                  LDL_cholesterol: LDL_cholesterol,
+                  HbA1c: HbA1c
+                )),
               );
             },
             child: Container(
@@ -157,7 +196,21 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FormePage(poids: poids, genre: genre)),
+                MaterialPageRoute(builder: (context) => FormePage(
+                  poids: poids,
+                  genre: genre,
+                  taille: taille,
+                  tension_artherielle: tension_artherielle,
+                  tabac: tabac,
+                  tabac_type: tabac_type,
+                  alcool: alcool,
+                  alcool_type: alcool_type,
+                  activite_physique: activite_physique,
+                  perimetre_abdominal: perimetre_abdominal,
+                  fonction_renale: fonction_renale,
+                  LDL_cholesterol: LDL_cholesterol,
+                  HbA1c: HbA1c
+                )),
               );
             },
             child: Container(
@@ -224,7 +277,21 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FatiguePage(poids: poids, genre: genre)),
+                MaterialPageRoute(builder: (context) => FatiguePage(
+                  poids: poids,
+                  genre: genre,
+                  taille: taille,
+                  tension_artherielle: tension_artherielle,
+                  tabac: tabac,
+                  tabac_type: tabac_type,
+                  alcool: alcool,
+                  alcool_type: alcool_type,
+                  activite_physique: activite_physique,
+                  perimetre_abdominal: perimetre_abdominal,
+                  fonction_renale: fonction_renale,
+                  LDL_cholesterol: LDL_cholesterol,
+                  HbA1c: HbA1c
+                )),
               );
             },
             child: Container(
@@ -291,7 +358,21 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AnxieuxPage(poids: poids, genre: genre)),
+                MaterialPageRoute(builder: (context) => AnxieuxPage(
+                  poids: poids,
+                  genre: genre,
+                  taille: taille,
+                  tension_artherielle: tension_artherielle,
+                  tabac: tabac,
+                  tabac_type: tabac_type,
+                  alcool: alcool,
+                  alcool_type: alcool_type,
+                  activite_physique: activite_physique,
+                  perimetre_abdominal: perimetre_abdominal,
+                  fonction_renale: fonction_renale,
+                  LDL_cholesterol: LDL_cholesterol,
+                  HbA1c: HbA1c
+                )),
               );
             },
             child: Container(
@@ -358,7 +439,21 @@ class MeteoDesEmotionsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage(poids: poids, genre: genre)),
+                MaterialPageRoute(builder: (context) => HomePage(
+                  poids: poids,
+                  genre: genre,
+                  taille: taille,
+                  HbA1c: HbA1c,
+                  perimetre_abdominal: perimetre_abdominal,
+                  LDL_cholesterol: LDL_cholesterol,
+                  activite_physique: activite_physique,
+                  tension_artherielle: tension_artherielle,
+                  fonction_renale: fonction_renale,
+                  tabac: tabac,
+                  tabac_type: tabac_type,
+                  alcool: alcool,
+                  alcool_type: alcool_type
+                )),
               );
             },
             child: Container(

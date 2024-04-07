@@ -1,14 +1,39 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
 import 'package:diavenir/DefiPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AnxieuxPage extends StatefulWidget {
-  late final double poids;
-  late final String? genre;
+  final double poids;
+  final String? genre;
+  final double taille;
+  double HbA1c;
+  double perimetre_abdominal;
+  double LDL_cholesterol;
+  double activite_physique;
+  String tension_artherielle; //input: "_/_" on utilise que le premier
+  double fonction_renale;
+  bool tabac;
+  String? tabac_type = 'Fumeur actif';
+  bool alcool;
+  double alcool_type;
 
-  AnxieuxPage({required this.poids, this.genre});
+  AnxieuxPage({
+    required this.poids,
+    required this.genre,
+    required this.taille,
+    required this.HbA1c,
+    required this.perimetre_abdominal,
+    required this.LDL_cholesterol,
+    required this.activite_physique,
+    required this.tension_artherielle, //input: "_/_" on utilise que le premier
+    required this.fonction_renale,
+    required this.tabac,
+    required this.tabac_type,
+    required this.alcool,
+    required this.alcool_type,
+  });
 
   @override
   State<AnxieuxPage> createState() => _AnxieuxPageState();
@@ -127,7 +152,21 @@ class _AnxieuxPageState extends State<AnxieuxPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DefiPage(poids: widget.poids, genre: widget.genre)),
+                  MaterialPageRoute(builder: (context) => DefiPage(
+                    poids: widget.poids,
+                    genre: widget.genre,
+                    taille: widget.taille,
+                    tension_artherielle: widget.tension_artherielle,
+                    tabac: widget.tabac,
+                    tabac_type: widget.tabac_type,
+                    alcool: widget.alcool,
+                    alcool_type: widget.alcool_type,
+                    activite_physique: widget.activite_physique,
+                    perimetre_abdominal: widget.perimetre_abdominal,
+                    fonction_renale: widget.fonction_renale,
+                    LDL_cholesterol: widget.LDL_cholesterol,
+                    HbA1c: widget.HbA1c
+                  )),
                 );
               },
             ),

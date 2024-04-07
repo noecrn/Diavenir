@@ -10,21 +10,21 @@ class DataInputPage extends StatefulWidget {
 }
 
 class _DataInputPageState extends State<DataInputPage> {
-  late String nom;
-  late String prenom;
+  late String nom = "";
+  late String prenom = "";
   late String genre = 'Homme';
   late double poids = 0.0;
-  late double taille;
-  late double HbA1c;
-  late double perimetre_abdominal;
-  late double LDL_cholesterol;
-  late double activite_physique;
-  late double tension_artherielle; //input: "_/_" on utilise que le premier
-  late double fonction_renale;
+  late double taille = 0.0;
+  late double HbA1c = 0.0;
+  late double perimetre_abdominal = 0.0;
+  late double LDL_cholesterol = 0.0;
+  late double activite_physique = 0.0;
+  late String tension_artherielle = ""; //input: "_/_" on utilise que le premier
+  late double fonction_renale = 0.0;
   bool tabac = false;
   late String? tabac_type = 'Fumeur actif';
   bool alcool = false;
-  late double alcool_type;
+  late double alcool_type = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -138,22 +138,15 @@ class _DataInputPageState extends State<DataInputPage> {
               const SizedBox(height: 16.0),
               TextField(
                 cursorColor: Color.fromRGBO(49, 100, 232, 1),
-                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'tension artherielle (mmHg)',
+                  labelText: 'Nom',
                   labelStyle: TextStyle(
                     color: Color.fromRGBO(49, 100, 232, 1),
                   ),
                 ),
                 onChanged: (value) {
                   setState(() {
-                    value = value.replaceAll(',', '.');
-                    double? parsedValue = double.tryParse(value);
-                    if (parsedValue != null) {
-                      tension_artherielle = parsedValue;
-                    } else {
-                      tension_artherielle = 0.0;
-                    }
+                    tension_artherielle = value;
                   });
                 },
               ),
@@ -332,7 +325,21 @@ class _DataInputPageState extends State<DataInputPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MeteoDesEmotionsPage(poids: poids, genre: genre)),
+                    MaterialPageRoute(builder: (context) => MeteoDesEmotionsPage(
+                      poids: poids,
+                      genre: genre,
+                      taille: taille,
+                      tension_artherielle: tension_artherielle,
+                      tabac: tabac,
+                      tabac_type: tabac_type,
+                      alcool: alcool,
+                      alcool_type: alcool_type,
+                      activite_physique: activite_physique,
+                      perimetre_abdominal: perimetre_abdominal,
+                      fonction_renale: fonction_renale,
+                      LDL_cholesterol: LDL_cholesterol,
+                      HbA1c: HbA1c
+                    )),
                   );
                 },
               ),

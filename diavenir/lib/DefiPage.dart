@@ -1,14 +1,39 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
 import 'package:diavenir/ConfirmationDefiPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DefiPage extends StatelessWidget {
-  late final double poids;
-  late final String? genre;
+  final double poids;
+  final String? genre;
+  final double taille;
+  double HbA1c;
+  double perimetre_abdominal;
+  double LDL_cholesterol;
+  double activite_physique;
+  String tension_artherielle; //input: "_/_" on utilise que le premier
+  double fonction_renale;
+  bool tabac;
+  String? tabac_type = 'Fumeur actif';
+  bool alcool;
+  double alcool_type;
 
-  DefiPage({required this.poids, this.genre});
+  DefiPage({
+    required this.poids,
+    required this.genre,
+    required this.taille,
+    required this.HbA1c,
+    required this.perimetre_abdominal,
+    required this.LDL_cholesterol,
+    required this.activite_physique,
+    required this.tension_artherielle, //input: "_/_" on utilise que le premier
+    required this.fonction_renale,
+    required this.tabac,
+    required this.tabac_type,
+    required this.alcool,
+    required this.alcool_type,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +79,21 @@ class DefiPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ConfirmationDefiPage(poids: poids, genre: genre)),
+                  MaterialPageRoute(builder: (context) => ConfirmationDefiPage(
+                    poids: poids,
+                    genre: genre,
+                    taille: taille,
+                    tension_artherielle: tension_artherielle,
+                    tabac: tabac,
+                    tabac_type: tabac_type,
+                    alcool: alcool,
+                    alcool_type: alcool_type,
+                    activite_physique: activite_physique,
+                    perimetre_abdominal: perimetre_abdominal,
+                    fonction_renale: fonction_renale,
+                    LDL_cholesterol: LDL_cholesterol,
+                    HbA1c: HbA1c
+                  ))
                 );
               },
               child: SvgPicture.asset('assets/svg/BullShitSVG.svg'),
