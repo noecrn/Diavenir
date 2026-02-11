@@ -1,17 +1,64 @@
-# Diavenir
+# 🩸 Diavenir
 
-Diavenir est une solution digitale rendant visible l'invisible et l'abstrait concret. Le but de cette application est de rendre compréhensible et accessible à tous les patients diabétiques le risque de complications à long terme. Notre objectif est de fournir aux patients diabétiques la motivation nécessaire pour changer leur mode de vie et l'avenir de leur maladie.
+![Status](https://img.shields.io/badge/Status-MVP-success)
+![Event](https://img.shields.io/badge/Event-Hacking%20Health%20Camp-red)
+![Tech](https://img.shields.io/badge/Built%20With-Flutter-blue)
 
-## Problème
+> **"Rendre visible l'invisible."** (Make the invisible visible.)  
+> A digital solution transforming abstract medical risks into concrete visual motivation.
 
-Le diabète est l'une des maladies chroniques les plus courantes dans le monde, touchant 1 adulte sur 11. Le diabète peut entraîner des complications, certaines pouvant être graves. Paradoxalement, la plupart des complications ne présentent pas de symptômes spécifiques jusqu'à ce qu'elles atteignent un stade avancé. Dans ce contexte, comment motiver les patients à changer leur mode de vie lorsque ces changements peuvent ne pas produire de résultats tangibles immédiats dans leur vie ?
+**Diavenir** is a mobile application prototype designed to bridge the gap between diabetic patients and the long-term management of their pathology. By transforming complex clinical data into intuitive visuals, we aim to trigger the motivation necessary for sustainable lifestyle changes.
 
-## Solution
+---
 
-Nous proposons une application qui illustre visuellement les complications du diabète et, plus important encore, démontre concrètement les conséquences des changements de mode de vie pour les patients. Diavenir est une application qui prend en compte les caractéristiques cliniques et biologiques des patients pour estimer le risque de complications à long terme. Le risque de complications sera représenté visuellement par une silhouette se remplissant de vert ou de rouge en fonction du niveau de risque, et cette représentation se modifiera dynamiquement en fonction des paramètres du patient. Une silhouette complète représentera le risque global de complications, puis une seconde silhouette montrera le risque spécifique de complications organe par organe.
+## 🧐 The Challenge
+Diabetes is a silent major global health issue affecting **1 in 11 adults**. Complications (cardiovascular, renal, optical) often develop over years without specific warning signs. 
 
-## Fonctionnalités
+Diavenir addresses the psychological barrier of chronic disease: **How can we motivate patients to change their lifestyle today when the consequences of not doing so are invisible and distant?**
 
-- Représentation visuelle des risques de complications à long terme.
-- Ajustement dynamique des niveaux de risque en fonction des paramètres du patient.
-- Évaluation du risque spécifique à chaque organe.
+## 💡 The Solution
+Diavenir makes the abstract concrete by personalizing clinical and biological data to estimate long-term risks.
+
+### The "Silhouette" Concept
+
+* **Dynamic Coloring:** A human silhouette fills with **Green** (healthy) or **Red** (risk) based on clinical parameters.
+* **Real-Time Feedback:** As parameters are adjusted (simulating diet or exercise), the silhouette updates instantly to show the impact of lifestyle choices.
+* **Organ-Specific View:** Users can visualize specific risks associated with different parts of the body (heart, eyes, kidneys), pinpointing where the "invisible" damage occurs.
+
+## 🛠️ Technical Implementation
+This project was built as an MVP during the **Hacking Health Camp**.
+
+* **Framework:** [Flutter](https://flutter.dev/) (Cross-platform iOS/Android)
+* **Language:** [Dart](https://dart.dev/)
+* **Inputs:** Integration of biological and clinical characteristics to estimate risk.
+
+## 🚀 Getting Started
+
+To run the prototype locally:
+
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/noecrn/diavenir.git](https://github.com/noecrn/diavenir.git)
+    cd diavenir
+    ```
+2.  **Install dependencies**
+    ```bash
+    flutter pub get
+    ```
+3.  **Run the app**
+    ```bash
+    flutter run
+    ```
+
+## 👥 The Team
+This project was born from the collaboration of a multidisciplinary team at **Hacking Health Camp**:
+
+* **Alexia Rouland:** Endocrinologist (CHU Dijon Bourgogne) – *Project Lead*
+* **Isabelle Simoneau:** PhD, Clinical Research Coordinator (URCE CHU Dijon) & Research Engineer (INSERM PADYS) – *Project Lead/Coordinator*
+* **Noé Cornu:** Developer – *Lead Mobile Development*
+* **Bertrand Chéronnet:** IT Craftsman & Data Molder (42 Mulhouse) – *Data & Problem Solving*
+* **Loïc Lanneau:** Advanced Practice Nurse (CHU Dijon Bourgogne) – *Clinical Insights*
+* **Thomas Bassetti:** Product Designer (Social Innovation) – *UX/UI Design*
+
+---
+*Disclaimer: This application is a prototype designed for demonstration purposes. It is not a certified medical device and should not be used for actual medical diagnosis.*
